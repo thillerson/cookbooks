@@ -1,3 +1,4 @@
+include_recipe "passenger_apache2"
 include_recipe "passenger_enterprise"
 include_recipe "rails_enterprise"
 
