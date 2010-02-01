@@ -1,6 +1,7 @@
-include_recipe "passenger_apache2"
 include_recipe "passenger_enterprise"
 include_recipe "rails_enterprise"
+
+cookbook "passenger"
 
 web_app "peeps" do
   docroot "/home/tony/peeps/public"
