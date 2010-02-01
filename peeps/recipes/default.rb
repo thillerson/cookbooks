@@ -1,7 +1,7 @@
-include_recipe "passenger_enterprise"
+include_recipe "passenger_enterprise::apache2"
 include_recipe "rails_enterprise"
 
-passenger_web_app "peeps" do
+web_app "peeps" do
   docroot "/home/tony/peeps/public"
   server_name "peeps.#{node[:domain]}"
   server_aliases [ "peeps", node[:hostname] ]
