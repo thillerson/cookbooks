@@ -1,8 +1,6 @@
 include_recipe "passenger_enterprise"
 include_recipe "rails_enterprise"
 
-cookbook "passenger"
-
 web_app "peeps" do
   docroot "/home/tony/peeps/public"
   server_name "peeps.#{node[:domain]}"
