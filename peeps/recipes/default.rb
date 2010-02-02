@@ -9,8 +9,6 @@ web_app "peeps" do
   rails_env "production"
 end
 
-set.mysql.server_root_password ""
-
 execute "create #{node[:railsapp][:db][:database]} database" do
   command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:railsapp][:db][:database]}"
   not_if do
