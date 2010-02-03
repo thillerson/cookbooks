@@ -8,11 +8,24 @@ directory node[:railsapp][:dir] do
 end
 
 # capify
-%w{ releases shared shared/system shared/pids shared/log }.each do |dir|
+%w{ releases
+    shared
+    shared/system
+    shared/pids
+    shared/log
+    shared/cached-copy
+    releases
+    releases/1
+    releases/1/public
+    releases/1/tmp
+  }.each do |dir|
   directory "#{node[:railsapp][:dir]}/#{dir}" do
     owner node[:deploy_user][:name]
   end
 end
+
+# hack a public dir together so the web app will get started
+link( "#{node[:railsapp][:dir]}/current") { to "#{node[:railsapp][:dir]}/releases/1" }
 
 web_app node[:railsapp][:name] do
   docroot "#{node[:railsapp][:dir]}/public"
