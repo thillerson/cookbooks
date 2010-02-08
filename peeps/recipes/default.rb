@@ -13,7 +13,6 @@ end
     shared/system
     shared/pids
     shared/log
-    shared/cached-copy
     releases
     releases/1
     releases/1/public
