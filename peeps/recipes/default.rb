@@ -27,7 +27,7 @@ end
 link( "#{node[:railsapp][:dir]}/current") { to "#{node[:railsapp][:dir]}/releases/1" }
 
 web_app node[:railsapp][:name] do
-  docroot "#{node[:railsapp][:dir]}/public"
+  docroot "#{node[:railsapp][:dir]}/current/public"
   server_name "#{node[:railsapp][:name]}.#{node[:domain]}"
   server_aliases [ node[:railsapp][:name], node[:hostname] ]
   rails_env "production"
