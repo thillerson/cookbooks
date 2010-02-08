@@ -34,7 +34,9 @@ web_app node[:railsapp][:name] do
 end
 
 execute "create #{node[:railsapp][:db][:database]} database" do
-  command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:railsapp][:db][:database]}"
+  root_p = node[:mysql][:server_root_password]
+  pass =  "-p#{root_p}" unless root_p == ""
+  command "/usr/bin/mysqladmin -u root #{pass} create #{node[:railsapp][:db][:database]}"
   not_if do
     m = Mysql.new("localhost", "root", @node[:mysql][:server_root_password])
     m.list_dbs.include?(@node[:railsapp][:db][:database])
