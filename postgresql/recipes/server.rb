@@ -21,10 +21,15 @@ include_recipe "postgresql::client"
 
 package "postgresql"
 
+case node.platform
+when "redhat","centos","fedora","suse"
+  package "postgresql-server"
+end
+
 service "postgresql" do
   case node[:platform]
   when "debian","ubuntu"
-    service_name "postgresql-8.3"
+    service_name "postgresql-#{node.postgresql.version}"
   end
   supports :restart => true, :status => true, :reload => true
   action :nothing

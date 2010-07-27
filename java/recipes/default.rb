@@ -18,26 +18,15 @@
 #
 
 java_pkg = value_for_platform(
-  "ubuntu" => {
-    "default" => "sun-java6-jdk"
+  [ "ubuntu", "debian" ] => {
+    "default" => "openjdk-6-jre-headless"
   },
-  "debian" => {
-    "default" => "sun-java6-jdk"
+  [ "redhat", "centos", "fedora" ] => {
+    "default" => "java-1.6.0-openjdk"
   },
-  "default" => "sun-java6-jdk"
+  "default" => "openjdk-6-jre-headless"
 )
 
-execute "update-java-alternatives" do
-  command "update-java-alternatives -s java-6-sun --jre"
-  only_if do platform?("ubuntu", "debian") end
-  ignore_failure true
-  action :nothing
-end
-
 package java_pkg do
-  response_file "java.seed"
   action :install
-  notifies :run, resources(:execute => "update-java-alternatives"), :immediately
 end
-
-package "ant"

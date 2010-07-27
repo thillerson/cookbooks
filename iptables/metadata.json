@@ -1,49 +1,42 @@
 {
-  "maintainer": "Opscode, Inc.",
-  "description": "Sets up iptables to use a script to maintain rules",
-  "recommendations": {
+    "recommendations": {
+    },
+    "attributes": {
+    },
+    "maintainer": "Opscode, Inc.",
+    "suggestions": {
+    },
+    "dependencies": {
+    },
+    "maintainer_email": "cookbooks@opscode.com",
+    "conflicting": {
+    },
+    "platforms": {
+      "debian": [
 
-  },
-  "maintainer_email": "cookbooks@opscode.com",
-  "recipes": {
-    "iptables": ""
-  },
-  "suggestions": {
+      ],
+      "centos": [
 
-  },
-  "platforms": {
-    "ubuntu": [
+      ],
+      "ubuntu": [
 
-    ],
-    "centos": [
+      ],
+      "redhat": [
 
-    ],
-    "debian": [
-
-    ],
-    "redhat": [
-
-    ]
-  },
-  "version": "0.7.0",
-  "name": "iptables",
-  "conflicting": {
-
-  },
-  "attributes": {
-
-  },
-  "providing": {
-    "iptables": [
-
-    ]
-  },
-  "license": "Apache 2.0",
-  "long_description": "",
-  "replacing": {
-
-  },
-  "dependencies": {
-
+      ]
+    },
+    "license": "Apache 2.0",
+    "version": "0.9.1",
+    "providing": {
+    },
+    "recipes": {
+      "iptables": "Installs iptables and sets up .d style config directory of iptables rules"
+    },
+    "replacing": {
+    },
+    "name": "iptables",
+    "description": "Sets up iptables to use a script to maintain rules",
+    "groupings": {
+    },
+    "long_description": ""
   }
-}

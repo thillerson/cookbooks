@@ -1,3 +1,6 @@
-tmp/*
 .rake_test_cache
-/peeps/.DS_Store
+.DS_Store
+*.swp
+*.swo
+*~
+
