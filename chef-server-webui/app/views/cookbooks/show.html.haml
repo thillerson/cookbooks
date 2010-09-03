@@ -1,0 +1,49 @@
+%script{:type=>"text/javascript", :src => "/javascripts/drop_down_menu.js"}
+.block#block-text
+  .content
+    %h2
+      .title
+        = "Cookbook: #{h @manifest["name"]}"
+        - unless @other_versions.nil? || @other_versions.empty?    
+          %select{:name => "choice", :onchange => "jump(this)", :size => "1"}
+            %option{:value => ""} Other Versions
+            %option{:value => ""} --------------
+            - @other_versions.each do |v|
+              %option{:value => url(:show_specific_version_cookbook, :cookbook_id => @cookbook_id, :cb_version => v)} "#{v}"
+    .inner
+      .accordion
+        - unless @manifest["libraries"].empty?
+          %h2.head= link_to "Library Files", "JavaScript:void(0);"
+          .files
+            - @manifest["libraries"].each do |f|
+              .code
+                %h4.head= link_to File.basename(f["name"]), "JavaScript:void(0);"
+                %pre.ruby= syntax_highlight(f["url"])
+        - unless @manifest["attributes"].empty?
+          %h2.head= link_to "Attribute Files", "JavaScript:void(0);"
+          .files
+            - @manifest["attributes"].each do |f|
+              .code
+                %h4.head= link_to File.basename(f["name"]), "JavaScript:void(0);"
+                %pre.ruby= syntax_highlight(f["url"])
+        - unless @manifest["definitions"].empty?
+          %h2.head= link_to "Definition Files", "JavaScript:void(0);"
+          .files
+            - @manifest["definitions"].each do |f|
+              .code
+                %h4.head= link_to File.basename(f["name"]), "JavaScript:void(0);"
+                %pre.ruby= syntax_highlight(f["url"])
+        - unless @manifest["recipes"].empty?
+          %h2.head= link_to "Recipe Files", "JavaScript:void(0);"
+          .files
+            - @manifest["recipes"].each do |f|
+              .code
+                %h4.head= link_to File.basename(f["name"]), "JavaScript:void(0);"
+                %pre.ruby= syntax_highlight(f["url"])
+        - unless @manifest["templates"].empty?
+          %h2.head= link_to "Template Files", "JavaScript:void(0);"
+          .files
+            - @manifest["templates"].each do |f|
+              .code
+                %h4.head= link_to File.basename(f["name"]), "JavaScript:void(0);"
+                %pre.ruby= syntax_highlight(f["url"])   
