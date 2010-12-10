@@ -2,6 +2,7 @@ include_recipe "passenger_enterprise::apache2"
 include_recipe "rails_enterprise"
 include_recipe "mysql::server"
 include_recipe "tomcat6"
+include_recipe "hadoop"
 
 # deploy directory
 directory node[:railsapp][:dir] do
