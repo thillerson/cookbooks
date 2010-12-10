@@ -17,7 +17,7 @@
 #
 
 require 'chef/knife'
-require 'json'
+require 'chef/json'
 
 class Chef
   class Knife
@@ -144,7 +144,7 @@ EOH
         ssh.name_args = [ server.addresses["public"][0], "/bin/bash /etc/install-chef && /usr/bin/chef-client -j /etc/chef/first-boot.json" ]
         ssh.config[:ssh_user] = "root"
         ssh.config[:manual] = true
-        ssh.config[:password] = saved_password
+        ssh.config[:ssh_password] = saved_password
         ssh.password = saved_password
         ssh.run
 
